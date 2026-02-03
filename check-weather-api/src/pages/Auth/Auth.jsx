@@ -29,17 +29,17 @@ export const Auth = () => {
 
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: '25px'}}>
                     <TextField 
-                        // label="Логин"
-                        placeholder="Логин"
-                        helperText="Введите значение логина"
+                        label="Логин"
+                        // placeholder="Логин"
+                        helperText="Введите валидный логин"
                         value={login}
                         onChange={handleChangeLogin}
                     />
 
                     <TextField 
-                        // label="Пароль"
-                        placeholder="Пароль"
-                        helperText="Введите значение пароль"
+                        label="Пароль"
+                        // placeholder="Пароль"
+                        helperText="Введите валидный пароль"
                         value={psw}
                         onChange={handleChangePsw}
                     />
