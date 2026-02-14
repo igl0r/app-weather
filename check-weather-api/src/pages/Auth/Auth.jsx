@@ -4,24 +4,41 @@
 // core design system MUI 
 // install react MUI
 //npm install @mui/material @emotion/react @emotion/styled
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { TextField, Box, Card, Typography, InputAdornment, Button } from '@mui/material';
 
-export const Auth = () => {
+export const Auth = ({ handleChangeStateLogin, isLogin }) => {
     const [login, setLogin] = useState('')
     const [psw, setPsw] = useState('')
+    const navigate = useNavigate();
 
     const handleChangeLogin = (e) => {
         const { value } = e.target; // p
-        console.log(value)
+        //console.log(value)
         setLogin(value);
     }
 
     const handleChangePsw = (e) => {
         const { value } = e.target; // p
-        console.log(value)
+        //console.log(value)
         setPsw(value);
     }
+
+    const handleLogin = () => {
+        if (login == 'admin' && psw == 'admin') {
+            handleChangeStateLogin(true)
+        } else {
+            handleChangeStateLogin(false);
+        }
+    }
+    
+    useEffect(() => {
+        if (isLogin) {
+            //navigation => profile
+            navigate('/profile')
+        }
+    }, [isLogin])
     return (
         <Box sx={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center'}}> 
             <Card sx={{ width: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', padding: '40px' }}>
@@ -44,7 +61,7 @@ export const Auth = () => {
                         onChange={handleChangePsw}
                     />
 
-                    <Button variant="contained"> Войти</Button>
+                    <Button variant="contained" onClick={handleLogin}> Войти</Button>
                 </Box>
             
             </Card>
